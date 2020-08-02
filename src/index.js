@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './component/App';
 import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import FoodDescription from './component/FoodDecription';
+import {BrowserRouter, Route} from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <React.StrictMode>
+      <BrowserRouter>
+        <Route exact component={App} path="/" />
+        <Route exact component={FoodDescription} path="/:id" />
+      </BrowserRouter>
+    </React.StrictMode>,
   document.getElementById('root')
 );
 
