@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import heart from '../asserts/Assets/Icons/Icon feather-heart-color.png';
 import { Link } from "react-router-dom";
 import searchImage from "../asserts/Assets/Icons/Icon feather-search.png";
+import playIcon from "../asserts/Assets/Icons/Icon ionic-ios-play-circle.png";
 
 class FoodDescription extends Component{
     constructor(props){
         super(props)
         this.state={
-            comment:''
+            comment:'',
         }       
     }
 
@@ -22,7 +23,7 @@ class FoodDescription extends Component{
                <div className="wrap">
                  <div className="search">
                    <button type="submit" className="searchButton" disabled>
-                   <img src={searchImage} /> 
+                      <img src={searchImage} /> 
                    </button>
                    <input type="text" className="searchTerm" placeholder="Search your favourite recipe "  />
                  </div>
@@ -35,8 +36,8 @@ class FoodDescription extends Component{
                  <table>
                    <tbody>
                      <td style={{padding: "10px"}}>
-                      <iframe width="560" height="315" src="https://www.youtube.com/embed/PZ4pctQMdg4"frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style={{bordeRadius: "15px"}}>
-                   </iframe>
+                      <img src={this.props.location.state.foodImage} width="560" height="315" style={{borderRadius: "15px", width: '400px', height: '200px', marginBottom: '20px'}} />
+                      <img src={playIcon} style={{position: 'relative', zIndex: '0', right: '225px', top: '-10px'}} />
                    <h5>Ingredients:</h5>
                    <p style={{fontSize:"13px"}} > Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
                    <h5>How to prepare:</h5>
@@ -81,10 +82,10 @@ class FoodDescription extends Component{
                        </div>
                      </div>
                      <h4 className="my-10">FAVOURITE THIS ITEM
-                     <img src={heart}></img></h4>
+                     <img src={heart} style={{marginLeft: '20px', marginRight: '10px'}} /></h4>
                      <hr/>
                      <span className="comment my-2">ADD COMMENTS</span>
-                     <textarea rows={7} style={{width: "100%"}} onChange={(e)=>this.handleComment(e)}></textarea>
+                     <textarea rows={7} style={{width: "100%"}} onChange={(e)=>this.handleComment(e)} />
                      <button className="comment-btn" onClick={()=>{alert(this.state.comment)}}>ADD COMMENT</button>
                      </td>
                    </tbody>

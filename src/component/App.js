@@ -39,11 +39,11 @@ class App extends Component {
   render() { 
     return ( 
         <div className="App">
+          <img src={image1} style={{right: '0px', position: 'absolute', width: '400px', height: 'auto'}} />
           <header className="App-header">
             <div className="container">
               <div className="d-flex align-items-start">
               <button type="submit" className="searchButton" disabled>
-                   {/* <i class="fas fa-search"></i> */}
                    <img src={searchImage} />
               </button>
                <input 
@@ -90,19 +90,8 @@ class App extends Component {
             }
               </div>
             </div>
-            
-            {/* <div className="card">
-                <img className="card-img-top" src="https://i.imgur.com/tDnjTXf.jpg" alt="food_image" />
-                <div className="card-body text-left" style={{color: 'black'}}>
-                  <div className="d-flex justify-content-between">
-                    <h3 className="card-title">Rose breasted Grosbeak chicken</h3>
-                    <img className="like-img-size" src={unlike} alt="like" />
-                  </div>
-                  <p style={{fontSize: "16px"}}>$<span className="mr-3"> 4.99 </span></p>
-                  <p className="card-text card-body-text">A unique combination of Indian Uthappam (pancake) and Italian pizza</p>
-                </div>
-            </div> */}
           </header>
+          <img src={image2} style={{position: 'relative', right: '570px', width: '350px', bottom: '80px', height: 'auto',zIndex: '-1'}} />
         </div>
      );
   }

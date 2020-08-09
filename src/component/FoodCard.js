@@ -9,7 +9,13 @@ class Card extends Component {
         super(props);
         this.state = { 
             isHovering: false,
+            customStyleBg: {},
+            cardEven: false,
          }
+    }
+
+    componentDidMount() {
+        this.creatingStyle()
     }
 
     handleMouseHover() {
@@ -22,11 +28,27 @@ class Card extends Component {
         };
     }
 
+    creatingStyle = () => {
+        if(this.props.id % 2 == 0) {
+            let temp = {
+                backgroundColor: '#000',
+                color: '#fff',
+            }
+            this.setState({customStyleBg: temp, cardEven: true});
+        } else {
+            let temp = {
+                backgroundColor: '#fff',
+                color: '#000',
+            }
+            this.setState({customStyleBg: temp});
+        }
+    }
+
     render() { 
         return ( 
             <>
-                <Link to={{ pathname: `/${this.props.id}`, state: {foodName: this.props.name}}} style={{textDecoration: "none"}}>
-                    <div className="card" onMouseEnter={() => {this.handleMouseHover()}} onMouseLeave={() => {this.handleMouseHover()}}>
+                <Link to={{ pathname: `/${this.props.id}`, state: {foodName: this.props.name, foodImage: this.props.imageSrc}}} style={{textDecoration: "none"}}>
+                    <div className="card" onMouseEnter={() => {this.handleMouseHover()}} onMouseLeave={() => {this.handleMouseHover()}} style={this.state.customStyleBg}>
                         {!this.state.isHovering ?  
                         <>
                         {
@@ -34,10 +56,14 @@ class Card extends Component {
                         : ''
                         }
                         <img className="card-img-top" src={this.props.imageSrc} alt="food_image" />
-                        <div className="card-body text-left" style={{color: 'black'}}>
+                        <div className="card-body text-left" >
                             <div className="d-flex justify-content-between">
                                 <h3 className="card-title">{this.props.name}</h3>
-                                <img className="like-img-size" src={unlike} alt="like" />
+                                {this.state.cardEven ? 
+                                    <img className="like-img-size" src={like} alt="like" /> :
+                                    <img className="like-img-size" src={unlike} alt="like" />
+                                }
+                                
                             </div>
                             <p style={{fontSize: "16px"}}>$<span className="mr-3"> {this.props.price}</span></p>
                             <p className="card-text card-body-text">{this.props.description}</p>
@@ -59,7 +85,8 @@ class Card extends Component {
 }
 
 const customStyle = {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#071515',
+    borderColor: 'white',
     color: 'white',
     fontSize: '16px',
     padding: '16px 32px',
